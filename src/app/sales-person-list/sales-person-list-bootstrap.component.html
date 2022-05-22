@@ -1,0 +1,23 @@
+<table class="table table-striped ">
+  <thead class="table-dark">
+  <tr>
+    <th scope="col">Full Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Sale Volume</th>
+    <th scope="col">Quota enough?</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let salePerson of salesPersonList">
+    <td>{{salePerson.firstName}} {{salePerson.lastName}}</td>
+    <td>{{salePerson.email}}</td>
+    <td>{{salePerson.salesVolume |  currency:'CNY'}}</td>
+    <td>
+      <div *ngIf="salePerson.salesVolume>20000; else notEnoughBlock">
+        Yes
+      </div>
+      <ng-template #notEnoughBlock>No</ng-template>
+    </td>
+  </tr>
+  </tbody>
+</table>
